@@ -1,0 +1,2097 @@
+[
+  {
+    "cardId": 1,
+    "title": "Alpine Adventure",
+    "description": "Breathtaking snow mountains and fearless explorers.",
+    "rating": 4.8,
+    "tags": [
+      "#travel",
+      "#mountain",
+      "#adventure"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 2,
+    "title": "Tropical Escape",
+    "description": "Crystal clear waters and relaxing beach vibes.",
+    "rating": 4.7,
+    "tags": [
+      "#travel",
+      "#beach",
+      "#vacation"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 3,
+    "title": "Street Food Bite",
+    "description": "Hot, spicy and delicious street style food.",
+    "rating": 4.5,
+    "tags": [
+      "#food",
+      "#pizza",
+      "#italian"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 4,
+    "title": "Gourmet Dish",
+    "description": "Fine dining served with perfection.",
+    "rating": 4.9,
+    "tags": [
+      "#food",
+      "#burger",
+      "#tasty"
+    ],
+    "available": false,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 5,
+    "title": "Football Finals",
+    "description": "The crowd roars as the final goal hits!",
+    "rating": 4.9,
+    "tags": [
+      "#sports",
+      "#basketball",
+      "#court"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 6,
+    "title": "Basketball Dunk",
+    "description": "Epic slam dunk moment captured perfectly.",
+    "rating": 4.7,
+    "tags": [
+      "#sports",
+      "#yoga",
+      "#wellness"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 7,
+    "title": "Forest Trail",
+    "description": "A calm natural pathway through wild woods.",
+    "rating": 4.6,
+    "tags": [
+      "#nature",
+      "#forest",
+      "#green"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 8,
+    "title": "Majestic Waterfall",
+    "description": "Nature’s power displayed in beauty.",
+    "rating": 4.8,
+    "tags": [
+      "#nature",
+      "#mountain",
+      "#peak"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 9,
+    "title": "City Skyline",
+    "description": "Aesthetic urban skyline at sunset.",
+    "rating": 4.5,
+    "tags": [
+      "#cities",
+      "#urban",
+      "#night"
+    ],
+    "available": false,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 10,
+    "title": "Neon Streets",
+    "description": "Bright neon lights of a busy city night.",
+    "rating": 4.7,
+    "tags": [
+      "#cities",
+      "#street",
+      "#busy"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 11,
+    "title": "Portrait Mood",
+    "description": "Capturing emotions in a single frame.",
+    "rating": 4.6,
+    "tags": [
+      "#people",
+      "#smile",
+      "#happy"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 12,
+    "title": "Candid Smile",
+    "description": "Beautiful natural smiles captured.",
+    "rating": 4.8,
+    "tags": [
+      "#people",
+      "#portrait",
+      "#face"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 13,
+    "title": "Desert Journey",
+    "description": "Sandy horizons and endless adventure.",
+    "rating": 4.4,
+    "tags": [
+      "#travel",
+      "#forest",
+      "#nature"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 14,
+    "title": "Ocean View",
+    "description": "Waves hitting the shore, calm and magical.",
+    "rating": 4.9,
+    "tags": [
+      "#travel",
+      "#explore",
+      "#adventure"
+    ],
+    "available": false,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 15,
+    "title": "Sushi Platter",
+    "description": "Authentic sushi loaded with flavors.",
+    "rating": 4.7,
+    "tags": [
+      "#food",
+      "#sushi",
+      "#fresh"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 16,
+    "title": "Chocolate Delight",
+    "description": "Melting chocolate dessert for sweet lovers.",
+    "rating": 4.9,
+    "tags": [
+      "#food",
+      "#pasta",
+      "#plate"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 17,
+    "title": "Tennis Courts",
+    "description": "Intense match between top players.",
+    "rating": 4.3,
+    "tags": [
+      "#sports",
+      "#gym",
+      "#workout"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 18,
+    "title": "Cycling Race",
+    "description": "Speed, stamina and victory vibes.",
+    "rating": 4.6,
+    "tags": [
+      "#sports",
+      "#running",
+      "#cardio"
+    ],
+    "available": false,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 19,
+    "title": "Misty Morning",
+    "description": "Foggy landscape with soothing silence.",
+    "rating": 4.8,
+    "tags": [
+      "#nature",
+      "#landscape",
+      "#scenic"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 20,
+    "title": "Golden Hour Park",
+    "description": "Sunshine kisses through trees in evening.",
+    "rating": 4.7,
+    "tags": [
+      "#nature",
+      "#ocean",
+      "#wave"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1505426346881-b72b27e84530?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 21,
+    "title": "Metro Rush",
+    "description": "The heartbeat of city transportation.",
+    "rating": 4.2,
+    "tags": [
+      "#cities",
+      "#skyline",
+      "#cityscape"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 22,
+    "title": "Old Town Charm",
+    "description": "Classic streets and vintage buildings.",
+    "rating": 4.6,
+    "tags": [
+      "#cities",
+      "#lights",
+      "#neon"
+    ],
+    "available": false,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 23,
+    "title": "Artist Portrait",
+    "description": "Creative soul through the lens.",
+    "rating": 4.5,
+    "tags": [
+      "#people",
+      "#fashion",
+      "#style"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 24,
+    "title": "Thinking Mode",
+    "description": "A deep thought moment captured.",
+    "rating": 4.4,
+    "tags": [
+      "#people",
+      "#laugh",
+      "#joy"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 25,
+    "title": "Forest Camping",
+    "description": "Bonfire, stars and wilderness.",
+    "rating": 4.8,
+    "tags": [
+      "#travel",
+      "#hiking",
+      "#outdoor"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 26,
+    "title": "Island Retreat",
+    "description": "A lonely island with endless peace.",
+    "rating": 4.6,
+    "tags": [
+      "#travel",
+      "#portrait",
+      "#journey"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 27,
+    "title": "Burger Feast",
+    "description": "Juicy burger loaded with cheese.",
+    "rating": 4.7,
+    "tags": [
+      "#food",
+      "#cake",
+      "#dessert"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 28,
+    "title": "Coffee Aesthetics",
+    "description": "Minimal coffee setup for cozy vibes.",
+    "rating": 4.5,
+    "tags": [
+      "#food",
+      "#salad",
+      "#healthy"
+    ],
+    "available": false,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 29,
+    "title": "Hockey Match",
+    "description": "Ice + speed + power-packed sport.",
+    "rating": 4.6,
+    "tags": [
+      "#sports",
+      "#fitness",
+      "#training"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1517836357463-d25ddfcbf042?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 30,
+    "title": "Cricket Stadium",
+    "description": "Exciting cricket match vibe.",
+    "rating": 4.9,
+    "tags": [
+      "#sports",
+      "#football",
+      "#soccer"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 31,
+    "title": "Snow Forest",
+    "description": "White and calm natural wonderland.",
+    "rating": 4.7,
+    "tags": [
+      "#nature",
+      "#tree",
+      "#wood"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 32,
+    "title": "Lake Reflection",
+    "description": "Mountains reflecting on lake surface.",
+    "rating": 4.8,
+    "tags": [
+      "#nature",
+      "#snow",
+      "#white"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 33,
+    "title": "City Bridge",
+    "description": "Long exposure beauty of bridge lights.",
+    "rating": 4.3,
+    "tags": [
+      "#cities",
+      "#downtown",
+      "#metro"
+    ],
+    "available": false,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 34,
+    "title": "Downtown Vibe",
+    "description": "Busy city roads with urban rush.",
+    "rating": 4.5,
+    "tags": [
+      "#cities",
+      "#building",
+      "#architecture"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 35,
+    "title": "Youth Fashion",
+    "description": "Modern and trendy youth portrait.",
+    "rating": 4.6,
+    "tags": [
+      "#people",
+      "#gaze",
+      "#serious"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 36,
+    "title": "Focused Eyes",
+    "description": "Eyes tell a deeper story than words.",
+    "rating": 4.8,
+    "tags": [
+      "#people",
+      "#cool",
+      "#confident"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 37,
+    "title": "Road Trip",
+    "description": "Endless roads and open skies.",
+    "rating": 4.7,
+    "tags": [
+      "#travel",
+      "#fashion",
+      "#style"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1487730116645-74489c95b41b?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 38,
+    "title": "Safari Ride",
+    "description": "Wildlife exploration deep into nature.",
+    "rating": 4.6,
+    "tags": [
+      "#travel",
+      "#sunset",
+      "#sky"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1445263541090-9ab0ee4a9ebe?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 39,
+    "title": "Pasta Love",
+    "description": "Creamy pasta for soul satisfaction.",
+    "rating": 4.9,
+    "tags": [
+      "#food",
+      "#tacos",
+      "#mexican"
+    ],
+    "available": false,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1565958011504-98d7dd2edc09?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 40,
+    "title": "Healthy Salad",
+    "description": "Fresh green salad with organic goodness.",
+    "rating": 4.3,
+    "tags": [
+      "#food",
+      "#icecream",
+      "#sweet"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a104?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 41,
+    "title": "Boxing Ring",
+    "description": "Fight night intensity captured.",
+    "rating": 4.6,
+    "tags": [
+      "#sports",
+      "#tennis",
+      "#racket"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1518611505868-48510c2e022b?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 42,
+    "title": "Soccer Dribble",
+    "description": "Fast moves and game control.",
+    "rating": 4.5,
+    "tags": [
+      "#sports",
+      "#ball",
+      "#game"
+    ],
+    "available": false,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 43,
+    "title": "Green Valley",
+    "description": "Lush green mountains and fresh breeze.",
+    "rating": 4.9,
+    "tags": [
+      "#nature",
+      "#field",
+      "#grass"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 44,
+    "title": "Sunrise Peak",
+    "description": "First sunlight over the hills.",
+    "rating": 4.8,
+    "tags": [
+      "#nature",
+      "#sea",
+      "#blue"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1505426346881-b72b27e84530?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 45,
+    "title": "City Traffic",
+    "description": "Fast life flowing through city streets.",
+    "rating": 4.2,
+    "tags": [
+      "#cities",
+      "#traffic",
+      "#cars"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 46,
+    "title": "Skyscraper View",
+    "description": "Tall buildings touching the sky.",
+    "rating": 4.6,
+    "tags": [
+      "#cities",
+      "#people",
+      "#crowd"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 47,
+    "title": "Smile Story",
+    "description": "A smile that says a thousand words.",
+    "rating": 4.8,
+    "tags": [
+      "#people",
+      "#expression",
+      "#emotion"
+    ],
+    "available": false,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 48,
+    "title": "Beard Look",
+    "description": "Strong personality portrait shot.",
+    "rating": 4.4,
+    "tags": [
+      "#people",
+      "#eyes",
+      "#soul"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 49,
+    "title": "Backpack Story",
+    "description": "Travel begins where comfort ends.",
+    "rating": 4.7,
+    "tags": [
+      "#travel",
+      "#people",
+      "#culture"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 50,
+    "title": "Wandering Soul",
+    "description": "Collecting moments across the globe.",
+    "rating": 4.8,
+    "tags": [
+      "#travel",
+      "#city",
+      "#explore"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 51,
+    "title": "Cheese Burst Moment",
+    "description": "Stretchy, cheesy pizza pull you can almost taste.",
+    "rating": 4.7,
+    "tags": [
+      "#food",
+      "#steak",
+      "#meat"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 52,
+    "title": "Asian Cuisine",
+    "description": "Hot noodles with authentic flavors and spices.",
+    "rating": 4.6,
+    "tags": [
+      "#food",
+      "#breakfast",
+      "#morning"
+    ],
+    "available": false,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 53,
+    "title": "Cricket Under Lights",
+    "description": "Night cricket match with stadium energy.",
+    "rating": 4.8,
+    "tags": [
+      "#sports",
+      "#flexibility",
+      "#health"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 54,
+    "title": "Skate Park Rush",
+    "description": "Tricks, flips and fearless vibes.",
+    "rating": 4.5,
+    "tags": [
+      "#sports",
+      "#strength",
+      "#power"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 55,
+    "title": "Hidden Waterfall",
+    "description": "Nature’s secret flowing masterpiece.",
+    "rating": 4.9,
+    "tags": [
+      "#nature",
+      "#wildlife",
+      "#animal"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 56,
+    "title": "Mystic Mountains",
+    "description": "Clouds kissing the mountain peaks.",
+    "rating": 4.8,
+    "tags": [
+      "#nature",
+      "#summit",
+      "#altitude"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 57,
+    "title": "Downtown Nights",
+    "description": "City shining brighter after sunset.",
+    "rating": 4.5,
+    "tags": [
+      "#cities",
+      "#window",
+      "#light"
+    ],
+    "available": false,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 58,
+    "title": "Urban Vibes",
+    "description": "City streets full of stories and motion.",
+    "rating": 4.4,
+    "tags": [
+      "#cities",
+      "#evening",
+      "#dusk"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 59,
+    "title": "Vintage Portrait",
+    "description": "A timeless frame with classic emotions.",
+    "rating": 4.6,
+    "tags": [
+      "#people",
+      "#warmth",
+      "#genuine"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 60,
+    "title": "Joyful Faces",
+    "description": "Pure laughter, pure happiness.",
+    "rating": 4.7,
+    "tags": [
+      "#people",
+      "#freedom",
+      "#vibe"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 61,
+    "title": "Desert Ride",
+    "description": "Sandy waves and endless horizons.",
+    "rating": 4.5,
+    "tags": [
+      "#travel",
+      "#landscape",
+      "#scenic"
+    ],
+    "available": false,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1523495557027-f127fa04d96e?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 62,
+    "title": "Boat Journey",
+    "description": "Sailing into calm and peace.",
+    "rating": 4.6,
+    "tags": [
+      "#travel",
+      "#adventure",
+      "#wild"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1432405972618-c60b0b51e1f1?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 63,
+    "title": "BBQ Feast",
+    "description": "Grilled to perfection with smoky flavors.",
+    "rating": 4.8,
+    "tags": [
+      "#food",
+      "#pancake",
+      "#fluffy"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 64,
+    "title": "Vegan Salad Bowl",
+    "description": "Healthy, green and delicious.",
+    "rating": 4.3,
+    "tags": [
+      "#food",
+      "#coffee",
+      "#morning"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 65,
+    "title": "Bike Race Heat",
+    "description": "Speed on two wheels unleashed.",
+    "rating": 4.6,
+    "tags": [
+      "#sports",
+      "#endurance",
+      "#athlete"
+    ],
+    "available": false,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 66,
+    "title": "Gym Energy",
+    "description": "Strength and sweat in one frame.",
+    "rating": 4.7,
+    "tags": [
+      "#sports",
+      "#core",
+      "#abs"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1517836357463-d25ddfcbf042?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 67,
+    "title": "Lonely Tree",
+    "description": "Standing strong in peaceful solitude.",
+    "rating": 4.4,
+    "tags": [
+      "#nature",
+      "#valley",
+      "#view"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 68,
+    "title": "Sunset Field",
+    "description": "Golden glow over quiet fields.",
+    "rating": 4.8,
+    "tags": [
+      "#nature",
+      "#shore",
+      "#beach"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1505426346881-b72b27e84530?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 69,
+    "title": "Old City Roads",
+    "description": "Rustic charm of historic towns.",
+    "rating": 4.5,
+    "tags": [
+      "#cities",
+      "#marketplace",
+      "#shop"
+    ],
+    "available": false,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 70,
+    "title": "Subway Stories",
+    "description": "Millions of journeys, one frame.",
+    "rating": 4.3,
+    "tags": [
+      "#cities",
+      "#modern",
+      "#contemporary"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 71,
+    "title": "Deep Expressions",
+    "description": "Eyes that speak louder than words.",
+    "rating": 4.7,
+    "tags": [
+      "#people",
+      "#strength",
+      "#power"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 72,
+    "title": "Stylish Frame",
+    "description": "Aesthetic and bold personality shot.",
+    "rating": 4.5,
+    "tags": [
+      "#people",
+      "#elegance",
+      "#class"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 73,
+    "title": "Snow Trek",
+    "description": "Adventure through frozen paradise.",
+    "rating": 4.8,
+    "tags": [
+      "#travel",
+      "#camping",
+      "#outdoor"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 74,
+    "title": "River Rafting",
+    "description": "Adrenaline rush through wild waters.",
+    "rating": 4.9,
+    "tags": [
+      "#travel",
+      "#peak",
+      "#summit"
+    ],
+    "available": false,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 75,
+    "title": "French Pastry",
+    "description": "Soft, sweet, and baked to perfection.",
+    "rating": 4.6,
+    "tags": [
+      "#food",
+      "#smoothie",
+      "#blend"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1506131082519-a4ec2f953cb1?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 76,
+    "title": "Fruit Splash",
+    "description": "Fresh and healthy vitamin boost.",
+    "rating": 4.4,
+    "tags": [
+      "#food",
+      "#donut",
+      "#sweet"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 77,
+    "title": "Olympic Spirit",
+    "description": "Chasing dreams, breaking limits.",
+    "rating": 4.8,
+    "tags": [
+      "#sports",
+      "#goal",
+      "#score"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 78,
+    "title": "Tennis Serve",
+    "description": "Power, precision and focus.",
+    "rating": 4.5,
+    "tags": [
+      "#sports",
+      "#match",
+      "#tournament"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1518611505868-48510c2e022b?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 79,
+    "title": "Calm River",
+    "description": "Flowing gently through nature.",
+    "rating": 4.7,
+    "tags": [
+      "#nature",
+      "#hike",
+      "#trail"
+    ],
+    "available": false,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 80,
+    "title": "Flower Bloom",
+    "description": "Beauty in tiny natural details.",
+    "rating": 4.9,
+    "tags": [
+      "#nature",
+      "#climb",
+      "#explore"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 81,
+    "title": "City Reflections",
+    "description": "Lights reflecting on rainy streets.",
+    "rating": 4.6,
+    "tags": [
+      "#cities",
+      "#glow",
+      "#luminous"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=500&h=600&fit=crop&h=600"
+  },
+  {
+    "cardId": 82,
+    "title": "Rooftop View",
+    "description": "Top view of a city never sleeps.",
+    "rating": 4.7,
+    "tags": [
+      "#cities",
+      "#hustle",
+      "#bustle"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=600&fit=crop&h=600"
+  },
+  {
+    "cardId": 83,
+    "title": "Minimal Portrait",
+    "description": "Less is more, emotions say it all.",
+    "rating": 4.5,
+    "tags": [
+      "#people",
+      "#personality",
+      "#character"
+    ],
+    "available": false,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&h=600"
+  },
+  {
+    "cardId": 84,
+    "title": "Laughing Frames",
+    "description": "Joy captured in candid moments.",
+    "rating": 4.8,
+    "tags": [
+      "#people",
+      "#presence",
+      "#aura"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=500&h=600&fit=crop&h=600"
+  },
+  {
+    "cardId": 85,
+    "title": "Backpack Trails",
+    "description": "Exploring with nothing but a backpack.",
+    "rating": 4.6,
+    "tags": [
+      "#travel",
+      "#tropical",
+      "#island"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 86,
+    "title": "Cave Exploration",
+    "description": "Into the deep unknown.",
+    "rating": 4.7,
+    "tags": [
+      "#travel",
+      "#wilderness",
+      "#untamed"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 87,
+    "title": "Donut Delight",
+    "description": "Sweet ring of happiness.",
+    "rating": 4.4,
+    "tags": [
+      "#food",
+      "#bread",
+      "#baked"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1549894078-d520b73f4fea?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 88,
+    "title": "Breakfast Table",
+    "description": "Morning meals set the mood right.",
+    "rating": 4.6,
+    "tags": [
+      "#food",
+      "#soup",
+      "#warm"
+    ],
+    "available": false,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 89,
+    "title": "Swimming Laps",
+    "description": "Stay fluid, stay focused.",
+    "rating": 4.5,
+    "tags": [
+      "#sports",
+      "#team",
+      "#together"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 90,
+    "title": "Surfing Waves",
+    "description": "Riding the ocean’s power.",
+    "rating": 4.9,
+    "tags": [
+      "#sports",
+      "#balance",
+      "#peace"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 91,
+    "title": "Rainforest Path",
+    "description": "Dense greens with rain-kissed leaves.",
+    "rating": 4.8,
+    "tags": [
+      "#nature",
+      "#path",
+      "#walk"
+    ],
+    "available": false,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 92,
+    "title": "Autumn Leaves",
+    "description": "Falling leaves, rising peace.",
+    "rating": 4.7,
+    "tags": [
+      "#nature",
+      "#tide",
+      "#water"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1505426346881-b72b27e84530?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 93,
+    "title": "City Monorail",
+    "description": "Fast track through the city skyline.",
+    "rating": 4.4,
+    "tags": [
+      "#cities",
+      "#urban",
+      "#life"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&h=600&fit=crop&h=600"
+  },
+  {
+    "cardId": 94,
+    "title": "Alley Walk",
+    "description": "Silent lanes with untold stories.",
+    "rating": 4.3,
+    "tags": [
+      "#cities",
+      "#electric",
+      "#energy"
+    ],
+    "available": false,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=500&h=600&fit=crop&sat=50"
+  },
+  {
+    "cardId": 95,
+    "title": "Cultural Attire",
+    "description": "Tradition stitched in frames.",
+    "rating": 4.7,
+    "tags": [
+      "#people",
+      "#attitude",
+      "#spirit"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&h=600&fit=crop&h=600"
+  },
+  {
+    "cardId": 96,
+    "title": "Golden Smile",
+    "description": "Smiles brighter than gold.",
+    "rating": 4.6,
+    "tags": [
+      "#people",
+      "#natural",
+      "#authentic"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&sat=50"
+  },
+  {
+    "cardId": 97,
+    "title": "Mountain Ride",
+    "description": "Biking through steep heights.",
+    "rating": 4.9,
+    "tags": [
+      "#travel",
+      "#wanderlust",
+      "#journey"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 98,
+    "title": "Sky Gliding",
+    "description": "Touching the skies with wings.",
+    "rating": 4.8,
+    "tags": [
+      "#travel",
+      "#trek",
+      "#trail"
+    ],
+    "available": false,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 99,
+    "title": "Ice Cream Treat",
+    "description": "Cold, creamy and colorful.",
+    "rating": 4.7,
+    "tags": [
+      "#food",
+      "#curry",
+      "#spicy"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1455619452474-d2be8b1e4e31?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 100,
+    "title": "Steak Sizzle",
+    "description": "Sizzling hot and juicy.",
+    "rating": 4.9,
+    "tags": [
+      "#food",
+      "#ramen",
+      "#noodle"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1632535471749-36e5b37b5ecc?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 101,
+    "title": "Forest Fog",
+    "description": "Misty forest morning with calm vibes.",
+    "rating": 4.5,
+    "tags": [
+      "#nature",
+      "#leaf",
+      "#autumn"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=600&fit=crop&h=600"
+  },
+  {
+    "cardId": 102,
+    "title": "Desert Safari",
+    "description": "Ride through golden sand dunes.",
+    "rating": 4.6,
+    "tags": [
+      "#travel",
+      "#smile",
+      "#memory"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 103,
+    "title": "Pancake Stack",
+    "description": "Sweet breakfast pancake tower.",
+    "rating": 4.7,
+    "tags": [
+      "#food",
+      "#chocolate",
+      "#rich"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 104,
+    "title": "Road Trip",
+    "description": "Driving into endless landscapes.",
+    "rating": 4.8,
+    "tags": [
+      "#travel",
+      "#outfit",
+      "#adventure"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1487730116645-74489c95b41b?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 105,
+    "title": "Healthy Bowl",
+    "description": "Fresh veggies in a healthy bowl.",
+    "rating": 4.5,
+    "tags": [
+      "#food",
+      "#cookie",
+      "#chewy"
+    ],
+    "available": false,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 106,
+    "title": "Tennis Court",
+    "description": "Smash the game on green court.",
+    "rating": 4.4,
+    "tags": [
+      "#sports",
+      "#motivation",
+      "#drive"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 107,
+    "title": "Forest Walk",
+    "description": "Walking through tall green trees.",
+    "rating": 4.9,
+    "tags": [
+      "#nature",
+      "#rock",
+      "#stone"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=600&fit=crop&h=600"
+  },
+  {
+    "cardId": 108,
+    "title": "City Subway",
+    "description": "Busy metro life in big cities.",
+    "rating": 4.3,
+    "tags": [
+      "#cities",
+      "#vibrant",
+      "#dynamic"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=600&fit=crop&sat=50"
+  },
+  {
+    "cardId": 109,
+    "title": "Basketball Dunk",
+    "description": "High jump and powerful dunk shot.",
+    "rating": 4.8,
+    "tags": [
+      "#sports",
+      "#speed",
+      "#sprint"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 110,
+    "title": "Model Pose",
+    "description": "Portrait of a stylish model.",
+    "rating": 4.6,
+    "tags": [
+      "#people",
+      "#timeless",
+      "#classic"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=500&h=600&fit=crop&sat=50"
+  },
+  {
+    "cardId": 111,
+    "title": "Burger Feast",
+    "description": "Juicy burger with melted cheese.",
+    "rating": 4.7,
+    "tags": [
+      "#food",
+      "#fruit",
+      "#fresh"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1542635503-e7f06e3c48fa?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 112,
+    "title": "Snow Trek",
+    "description": "Walking through snow-covered peaks.",
+    "rating": 4.6,
+    "tags": [
+      "#travel",
+      "#golden",
+      "#moment"
+    ],
+    "available": false,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1445263541090-9ab0ee4a9ebe?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 113,
+    "title": "City Bridge",
+    "description": "Beautiful bridge architecture.",
+    "rating": 4.5,
+    "tags": [
+      "#cities",
+      "#iconic",
+      "#landmark"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&h=600&fit=crop&sat=50"
+  },
+  {
+    "cardId": 114,
+    "title": "Dinner Plate",
+    "description": "Fine dining served hot.",
+    "rating": 4.4,
+    "tags": [
+      "#food",
+      "#dinner",
+      "#plate"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 115,
+    "title": "Cricket Match",
+    "description": "Live cricket stadium match action.",
+    "rating": 4.7,
+    "tags": [
+      "#sports",
+      "#energy",
+      "#power"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1517836357463-d25ddfcbf042?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 116,
+    "title": "Rainforest",
+    "description": "Deep green rainforest vibes.",
+    "rating": 4.9,
+    "tags": [
+      "#nature",
+      "#bloom",
+      "#flower"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&h=600&fit=crop&h=600"
+  },
+  {
+    "cardId": 117,
+    "title": "City Skyline",
+    "description": "Tall buildings touching clouds.",
+    "rating": 4.8,
+    "tags": [
+      "#cities",
+      "#noir",
+      "#moody"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=500&h=600&fit=crop&sat=-50"
+  },
+  {
+    "cardId": 118,
+    "title": "Camping Night",
+    "description": "Tent under starry sky.",
+    "rating": 4.7,
+    "tags": [
+      "#travel",
+      "#face",
+      "#expression"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 119,
+    "title": "Smiling Faces",
+    "description": "Joyful moments captured.",
+    "rating": 4.6,
+    "tags": [
+      "#people",
+      "#artistic",
+      "#creative"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&h=600&fit=crop&sat=50"
+  },
+  {
+    "cardId": 120,
+    "title": "Hot Coffee",
+    "description": "Fresh brewed coffee cup.",
+    "rating": 4.5,
+    "tags": [
+      "#food",
+      "#pizza",
+      "#cheesy"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 121,
+    "title": "Beach Sunset",
+    "description": "Sunset vibes by the ocean.",
+    "rating": 4.9,
+    "tags": [
+      "#nature",
+      "#horizon",
+      "#sunset"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1505426346881-b72b27e84530?w=500&h=600&fit=crop&h=600"
+  },
+  {
+    "cardId": 122,
+    "title": "City Traffic",
+    "description": "Fast lane city traffic movement.",
+    "rating": 4.2,
+    "tags": [
+      "#cities",
+      "#atmospheric",
+      "#vibe"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=600&fit=crop&sat=-50"
+  },
+  {
+    "cardId": 123,
+    "title": "Cycling Adventure",
+    "description": "Exploring nature on cycles.",
+    "rating": 4.7,
+    "tags": [
+      "#travel",
+      "#freedom",
+      "#wandering"
+    ],
+    "available": false,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 124,
+    "title": "Volleyball Game",
+    "description": "Beach volleyball match fun.",
+    "rating": 4.6,
+    "tags": [
+      "#sports",
+      "#passion",
+      "#play"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 125,
+    "title": "Hiking Trail",
+    "description": "Rocky paths and adventure trails.",
+    "rating": 4.8,
+    "tags": [
+      "#nature",
+      "#vibrant",
+      "#color"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=600&fit=crop&sat=50"
+  },
+  {
+    "cardId": 126,
+    "title": "Portrait Smile",
+    "description": "Human emotions in one frame.",
+    "rating": 4.6,
+    "tags": [
+      "#people",
+      "#moody",
+      "#mysterious"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&sat=-50"
+  },
+  {
+    "cardId": 127,
+    "title": "Skyscraper View",
+    "description": "Top city view from buildings.",
+    "rating": 4.5,
+    "tags": [
+      "#cities",
+      "#zen",
+      "#minimal"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&h=600&fit=crop&auto=compress"
+  },
+  {
+    "cardId": 128,
+    "title": "Tacos Treat",
+    "description": "Mexican tacos with toppings.",
+    "rating": 4.8,
+    "tags": [
+      "#food",
+      "#sushi",
+      "#roll"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 129,
+    "title": "Boxing Ring",
+    "description": "Fight night in boxing arena.",
+    "rating": 4.7,
+    "tags": [
+      "#sports",
+      "#focus",
+      "#concentration"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1518611505868-48510c2e022b?w=500&h=600&fit=crop&crop=faces"
+  },
+  {
+    "cardId": 130,
+    "title": "River Flow",
+    "description": "Nature's calm flowing river.",
+    "rating": 4.9,
+    "tags": [
+      "#nature",
+      "#majestic",
+      "#grand"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=600&fit=crop&sat=50"
+  },
+  {
+    "cardId": 131,
+    "title": "Street Portrait",
+    "description": "Candid street photography.",
+    "rating": 4.6,
+    "tags": [
+      "#people",
+      "#intense",
+      "#focused"
+    ],
+    "available": false,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=500&h=600&fit=crop&sat=-50"
+  },
+  {
+    "cardId": 132,
+    "title": "Paris View",
+    "description": "Beautiful evening in Paris city.",
+    "rating": 4.7,
+    "tags": [
+      "#travel",
+      "#energy",
+      "#dynamic"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 133,
+    "title": "Pasta Special",
+    "description": "Italian pasta with sauce and herbs.",
+    "rating": 4.8,
+    "tags": [
+      "#food",
+      "#pasta",
+      "#delicious"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=600&fit=crop&q=80"
+  },
+  {
+    "cardId": 134,
+    "title": "Surfing Fun",
+    "description": "Riding waves at the beach.",
+    "rating": 4.7,
+    "tags": [
+      "#sports",
+      "#slam",
+      "#dunk"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 135,
+    "title": "Waterfall Wonder",
+    "description": "Huge waterfall in wild nature.",
+    "rating": 4.9,
+    "tags": [
+      "#nature",
+      "#serene",
+      "#calm"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&h=600&fit=crop&sat=50"
+  },
+  {
+    "cardId": 136,
+    "title": "City Market",
+    "description": "Busy market street vibes.",
+    "rating": 4.3,
+    "tags": [
+      "#cities",
+      "#illuminate",
+      "#shine"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=500&h=600&fit=crop&fm=webp"
+  },
+  {
+    "cardId": 137,
+    "title": "Solo Traveler",
+    "description": "One backpack, endless journeys.",
+    "rating": 4.8,
+    "tags": [
+      "#travel",
+      "#vibes",
+      "#adventure"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1517836357463-d25ddfcbf042?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 138,
+    "title": "Ice Cream Scoop",
+    "description": "Chill treat on a sunny day.",
+    "rating": 4.6,
+    "tags": [
+      "#icecream",
+      "#dessert"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 139,
+    "title": "Skate Tricks",
+    "description": "Skateboarding street tricks.",
+    "rating": 4.4,
+    "tags": [
+      "#sports",
+      "#stretch",
+      "#zen"
+    ],
+    "available": false,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 140,
+    "title": "Jungle Wild",
+    "description": "Deep jungle exploration.",
+    "rating": 4.9,
+    "tags": [
+      "#nature",
+      "#peaceful",
+      "#tranquil"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1505426346881-b72b27e84530?w=500&h=600&fit=crop&sat=50"
+  },
+  {
+    "cardId": 141,
+    "title": "Urban Faces",
+    "description": "People of the city.",
+    "rating": 4.5,
+    "tags": [
+      "#people",
+      "#dramatic",
+      "#bold"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&h=600&fit=crop&sat=-50"
+  },
+  {
+    "cardId": 142,
+    "title": "Tokyo Streets",
+    "description": "Vibrant streets of Tokyo.",
+    "rating": 4.8,
+    "tags": [
+      "#cities",
+      "#explore",
+      "#discover"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=600&fit=crop&fm=webp"
+  },
+  {
+    "cardId": 143,
+    "title": "Mountain Hike",
+    "description": "Climbing heights of hills.",
+    "rating": 4.7,
+    "tags": [
+      "#hike",
+      "#travel"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 144,
+    "title": "Chocolate Cake",
+    "description": "Rich chocolate layered cake.",
+    "rating": 4.8,
+    "tags": [
+      "#cake",
+      "#dessert"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 145,
+    "title": "Yoga Outdoors",
+    "description": "Morning yoga in fresh air.",
+    "rating": 4.6,
+    "tags": [
+      "#sports",
+      "#pump",
+      "#burn"
+    ],
+    "available": true,
+    "category": "sports",
+    "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&h=600&fit=crop&w=600"
+  },
+  {
+    "cardId": 146,
+    "title": "Leaf Closeup",
+    "description": "Macro shot of green leaf.",
+    "rating": 4.7,
+    "tags": [
+      "#nature",
+      "#natural",
+      "#raw"
+    ],
+    "available": true,
+    "category": "nature",
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=600&fit=crop&sat=-50"
+  },
+  {
+    "cardId": 147,
+    "title": "Old Town",
+    "description": "Classic old city vibes.",
+    "rating": 4.5,
+    "tags": [
+      "#cities",
+      "#monument",
+      "#historic"
+    ],
+    "available": true,
+    "category": "cities",
+    "image": "https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&h=600&fit=crop&fm=webp"
+  },
+  {
+    "cardId": 148,
+    "title": "Traveler Girl",
+    "description": "Woman exploring the world.",
+    "rating": 4.8,
+    "tags": [
+      "#people",
+      "#candid",
+      "#moment"
+    ],
+    "available": true,
+    "category": "people",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&auto=compress"
+  },
+  {
+    "cardId": 149,
+    "title": "Sushi Rolls",
+    "description": "Fresh Japanese sushi platter.",
+    "rating": 4.9,
+    "tags": [
+      "#sushi",
+      "#japanese"
+    ],
+    "available": true,
+    "category": "food",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=600&fit=crop"
+  },
+  {
+    "cardId": 150,
+    "title": "Cliff View",
+    "description": "View from mountain cliff top.",
+    "rating": 4.9,
+    "tags": [
+      "#cliff",
+      "#adventure"
+    ],
+    "available": true,
+    "category": "travel",
+    "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=600&fit=crop"
+  }
+]

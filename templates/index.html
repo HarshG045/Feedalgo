@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Video Feed Simulator</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Roboto', Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .header {
+            background: #000;
+            border-bottom: 1px solid #333;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        .top-search {
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+        }
+        .top-search input {
+            width: 100%;
+            padding: 10px 20px;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+        .top-search input:focus {
+            border-color: #666;
+        }
+        .top-search input::placeholder {
+            color: #888;
+        }
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #0084ff;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+            font-size: 14px;
+            font-weight: 600;
+            max-width: 300px;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+        .main-container {
+            display: flex;
+            height: calc(100vh - 60px);
+            gap: 0;
+        }
+        /* Navigation Sidebar */
+        .nav-sidebar {
+            width: 70px;
+            background: #000;
+            border-right: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            gap: 10px;
+            align-items: center;
+        }
+        .nav-btn-icon {
+            width: 50px;
+            height: 50px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            color: rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+        }
+        .nav-btn-icon:hover {
+            color: rgba(255, 255, 255, 1);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+        .nav-btn-icon.active {
+            color: rgba(255, 255, 255, 1);
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+        .nav-btn-icon .tooltip {
+            position: absolute;
+            left: 65px;
+            background: #333;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 1000;
+        }
+        .nav-btn-icon:hover .tooltip {
+            opacity: 1;
+        }
+        /* Content Sidebar */
+        .content-sidebar {
+            width: 0;
+            background: #1a1a1a;
+            border-right: 1px solid #333;
+            overflow: hidden;
+            transition: width 0.3s ease;
+        }
+        .content-sidebar.active {
+            width: 350px;
+            overflow-y: auto;
+        }
+        .sidebar-section {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-container h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Roboto', Arial, sans-serif;
+            transition: border-color 0.2s;
+            background: #2a2a2a;
+            color: #fff;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #0084ff;
+        }
+        .filter-section {
+            margin-top: 20px;
+        }
+        .filter-section h4 {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .category-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .chip {
+            padding: 6px 12px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 16px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+            color: #ccc;
+        }
+        .chip:hover {
+            background: #333;
+            border-color: #555;
+        }
+        .chip.active {
+            background: #0084ff;
+            color: white;
+            border-color: #0084ff;
+        }
+        .search-results {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+        .shuffle-btn {
+            width: 100%;
+            padding: 12px;
+            background: #0084ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .shuffle-btn:hover {
+            background: #0073e6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 132, 255, 0.4);
+        }
+        .shuffle-btn:active {
+            transform: translateY(0);
+        }
+        /* Profile Section */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+        .profile-info h3 {
+            font-size: 18px;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+        .profile-info p {
+            color: #999;
+            font-size: 13px;
+        }
+        .profile-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .stat-box {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        .stat-box .number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0084ff;
+        }
+        .stat-box .label {
+            font-size: 12px;
+            color: #999;
+            margin-top: 4px;
+        }
+        /* Dashboard Section */
+        .dashboard-mini-card {
+            background: #2a2a2a;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .mini-label {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .mini-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0084ff;
+        }
+        .analytics-section {
+            margin-bottom: 25px;
+        }
+        .analytics-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #333;
+        }
+        .analytics-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .analytics-item {
+            background: #2a2a2a;
+            border: 1px solid #333;
+            padding: 12px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .analytics-item-name {
+            font-size: 13px;
+            color: #fff;
+            font-weight: 500;
+        }
+        .analytics-item-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0084ff;
+        }
+        .analytics-item-bar {
+            height: 4px;
+            background: #0084ff;
+            border-radius: 2px;
+            margin-top: 6px;
+            transition: width 0.3s ease;
+        }
+        .recommendation-info {
+            background: #2a2a2a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .recommendation-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+        .recommendation-item:last-child {
+            border-bottom: none;
+        }
+        .rec-label {
+            font-size: 12px;
+            color: #999;
+        }
+        .rec-value {
+            font-size: 12px;
+            color: #fff;
+            font-weight: 600;
+        }
+        .recommendations-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .recommendation-card {
+            background: #2a2a2a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .rec-rank {
+            width: 30px;
+            height: 30px;
+            background: #0084ff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .rec-video-info {
+            flex: 1;
+        }
+        .rec-video-title {
+            font-size: 13px;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .rec-video-meta {
+            font-size: 11px;
+            color: #999;
+        }
+        .rec-score {
+            font-size: 12px;
+            color: #0084ff;
+            font-weight: 700;
+        }
+        .category-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .category-stat-item {
+            background: #2a2a2a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 10px;
+        }
+        .category-stat-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+        .category-name {
+            font-size: 13px;
+            color: #fff;
+            font-weight: 600;
+        }
+        .category-count {
+            font-size: 12px;
+            color: #999;
+        }
+        .interaction-list {
+            margin-top: 20px;
+        }
+        .interaction-item {
+            background: #2a2a2a;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #333;
+        }
+        /* Videos Infinite Scroll Section */
+        .video-scroll-container {
+            height: calc(100vh - 140px);
+            overflow-y: auto;
+        }
+        .video-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .video-item:hover {
+            background: #2a2a2a;
+        }
+        .video-thumb {
+            width: 120px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: #2a2a2a;
+        }
+        .video-info {
+            flex: 1;
+        }
+        .video-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #fff;
+        }
+        .video-info p {
+            font-size: 12px;
+            color: #999;
+        }
+        .video-stats {
+            display: flex;
+            gap: 10px;
+            margin-top: 6px;
+            font-size: 11px;
+            color: #666;
+        }
+        /* Notifications Section */
+        .notification-item {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            gap: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .notification-item:hover {
+            background: #2a2a2a;
+        }
+        .notification-item.unread {
+            background: rgba(0, 132, 255, 0.1);
+        }
+        .notif-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #0084ff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .notif-content h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+        .notif-content p {
+            font-size: 12px;
+            color: #999;
+        }
+        .notif-time {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+        }
+        .feed-side {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            position: relative;
+            background: #000;
+        }
+        .feed-card {
+            background: #000;
+            width: 100%;
+            height: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                -2px 0 20px rgba(255, 255, 255, 0.05),
+                2px 0 20px rgba(255, 255, 255, 0.05);
+        }
+        .card-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .card-avatar {
+            font-size: 24px;
+            background: rgba(255, 255, 255, 0.9);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-meta {
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .card-username {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .card-time {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        .follow-btn {
+            padding: 8px 20px;
+            background: rgba(0, 132, 255, 0.9);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+            backdrop-filter: blur(10px);
+        }
+        .follow-btn:hover {
+            background: rgba(0, 115, 230, 0.9);
+            transform: scale(1.05);
+        }
+        .follow-btn.following {
+            background: rgba(228, 230, 235, 0.9);
+            color: #222;
+        }
+        .card-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .card-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+        .card-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .card-info-bottom {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 100px;
+            z-index: 10;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .card-hashtags {
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+        .card-stats {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        /* Right Side Action Buttons */
+        .right-actions {
+            position: absolute;
+            right: 15px;
+            bottom: 80px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        .action-btn {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        .action-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        .action-btn span {
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            margin-top: 2px;
+        }
+        /* Right Navigation Controls */
+        .right-nav {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        #commentModal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+        #commentModal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+        }
+        .modal-content h3 {
+            margin-bottom: 15px;
+        }
+        .modal-content textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: Arial;
+            resize: vertical;
+            min-height: 100px;
+        }
+        .modal-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        .modal-buttons button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .btn-post {
+            background: #0084ff;
+            color: white;
+        }
+        .btn-cancel {
+            background: #f0f0f0;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="top-search">
+            <input type="text" id="topSearchInput" placeholder="Search" oninput="searchVideos()">
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Navigation Sidebar -->
+        <div class="nav-sidebar">
+            <button class="nav-btn-icon" onclick="showSection('search')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span class="tooltip">Search</span>
+            </button>
+            <button class="nav-btn-icon" onclick="showSection('profile')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="tooltip">Profile</span>
+            </button>
+            <button class="nav-btn-icon" onclick="showSection('dashboard')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                <span class="tooltip">Dashboard</span>
+            </button>
+            <button class="nav-btn-icon" onclick="showSection('videos')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <span class="tooltip">Videos</span>
+            </button>
+            <button class="nav-btn-icon" onclick="showSection('notifications')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="tooltip">Notifications</span>
+            </button>
+        </div>
+
+        <!-- Search Section -->
+        <div class="content-sidebar" id="searchSection">
+            <div class="sidebar-section">
+                <h2 class="section-title">🔍 Search Videos</h2>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search by title, creator, or hashtag..." oninput="searchVideos()">
+                
+                <div class="filter-section">
+                    <h4>Categories</h4>
+                    <div class="category-chips">
+                        <div class="chip" onclick="filterByCategory('all')">All</div>
+                        <div class="chip" onclick="filterByCategory('travel')">Travel</div>
+                        <div class="chip" onclick="filterByCategory('food')">Food</div>
+                        <div class="chip" onclick="filterByCategory('sports')">Sports</div>
+                        <div class="chip" onclick="filterByCategory('nature')">Nature</div>
+                        <div class="chip" onclick="filterByCategory('cities')">Cities</div>
+                        <div class="chip" onclick="filterByCategory('people')">People</div>
+                    </div>
+                </div>
+
+                <button class="shuffle-btn" onclick="shuffleFeed()">
+                    <span>🔀</span>
+                    <span>Shuffle Feed</span>
+                </button>
+
+                <div class="search-results" id="searchResults">
+                    Showing all videos
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="content-sidebar" id="profileSection">
+            <div class="sidebar-section">
+                <h2 class="section-title">👤 Profile</h2>
+                <div class="profile-header">
+                    <div class="profile-avatar">😊</div>
+                    <div class="profile-info">
+                        <h3>You</h3>
+                        <p>@your_username</p>
+                        <p style="margin-top: 8px; color: #222;">Tech enthusiast | Content creator</p>
+                    </div>
+                </div>
+                
+                <div class="profile-stats">
+                    <div class="stat-box">
+                        <div class="number">150</div>
+                        <div class="label">Videos</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">4</div>
+                        <div class="label">Following</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">1.2K</div>
+                        <div class="label">Followers</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">5.8K</div>
+                        <div class="label">Likes</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h4 style="font-size: 14px; margin-bottom: 10px; color: #666;">Interests</h4>
+                    <div class="category-chips">
+                        <div class="chip active">#python</div>
+                        <div class="chip active">#tech</div>
+                        <div class="chip active">#coding</div>
+                        <div class="chip active">#travel</div>
+                        <div class="chip active">#fitness</div>
+                        <div class="chip active">#music</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div class="content-sidebar" id="dashboardSection">
+            <div class="sidebar-section">
+                <h2 class="section-title">📊 Real-Time Analytics</h2>
+                
+                <!-- Quick Stats -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+                    <div class="dashboard-mini-card">
+                        <div class="mini-label">Total Likes</div>
+                        <div class="mini-number" id="dashLikes">0</div>
+                    </div>
+                    <div class="dashboard-mini-card">
+                        <div class="mini-label">Total Comments</div>
+                        <div class="mini-number" id="dashComments">0</div>
+                    </div>
+                    <div class="dashboard-mini-card">
+                        <div class="mini-label">Total Shares</div>
+                        <div class="mini-number" id="dashShares">0</div>
+                    </div>
+                    <div class="dashboard-mini-card">
+                        <div class="mini-label">Total Views</div>
+                        <div class="mini-number" id="dashViews">0</div>
+                    </div>
+                </div>
+
+                <!-- Top Creators by Likes -->
+                <div class="analytics-section">
+                    <h3 class="analytics-title">🏆 Top Creators by Likes</h3>
+                    <div id="topCreatorsContainer" class="analytics-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Top Hashtags -->
+                <div class="analytics-section">
+                    <h3 class="analytics-title">#️⃣ Trending Hashtags</h3>
+                    <div id="topHashtagsContainer" class="analytics-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Recommendation Engine Status -->
+                <div class="analytics-section">
+                    <h3 class="analytics-title">🎯 Recommendation Engine</h3>
+                    <div class="recommendation-info">
+                        <div class="recommendation-item">
+                            <span class="rec-label">Algorithm:</span>
+                            <span class="rec-value">Multi-Factor Scoring</span>
+                        </div>
+                        <div class="recommendation-item">
+                            <span class="rec-label">Weights:</span>
+                            <span class="rec-value">Engagement 35% • Recency 35%</span>
+                        </div>
+                        <div class="recommendation-item">
+                            <span class="rec-label">Factors:</span>
+                            <span class="rec-value">Relationship 20% • Interests 10%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Recommendations -->
+                <div class="analytics-section">
+                    <h3 class="analytics-title">🎯 Upcoming Tags in Feed</h3>
+                    <div id="nextRecommendations" class="recommendations-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Category Performance -->
+                <div class="analytics-section">
+                    <h3 class="analytics-title">📊 Category Performance</h3>
+                    <div id="categoryPerformance" class="category-stats">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Videos Infinite Scroll Section -->
+        <div class="content-sidebar" id="videosSection">
+            <div class="sidebar-section" style="padding: 20px 0;">
+                <h2 class="section-title" style="padding: 0 20px;">🎥 All Videos</h2>
+                <div class="video-scroll-container" id="videoScrollContainer">
+                    <!-- Videos will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications Section -->
+        <div class="content-sidebar" id="notificationsSection">
+            <div class="sidebar-section" style="padding: 20px 0;">
+                <h2 class="section-title" style="padding: 0 20px 20px 20px;">🔔 Notifications</h2>
+                <div id="notificationsList">
+                    <div class="notification-item unread">
+                        <div class="notif-icon">❤️</div>
+                        <div class="notif-content">
+                            <h4>New Like!</h4>
+                            <p>Someone liked your video "Amazing Travel Destination"</p>
+                            <div class="notif-time">2 minutes ago</div>
+                        </div>
+                    </div>
+                    <div class="notification-item unread">
+                        <div class="notif-icon">💬</div>
+                        <div class="notif-content">
+                            <h4>New Comment</h4>
+                            <p>John Doe commented: "Great content!"</p>
+                            <div class="notif-time">15 minutes ago</div>
+                        </div>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notif-icon">👥</div>
+                        <div class="notif-content">
+                            <h4>New Follower</h4>
+                            <p>Sarah Smith started following you</p>
+                            <div class="notif-time">1 hour ago</div>
+                        </div>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notif-icon">🔀</div>
+                        <div class="notif-content">
+                            <h4>Video Shared</h4>
+                            <p>Your video was shared 5 times</p>
+                            <div class="notif-time">3 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notif-icon">📊</div>
+                        <div class="notif-content">
+                            <h4>Milestone Reached!</h4>
+                            <p>You've reached 1000 total likes!</p>
+                            <div class="notif-time">5 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notif-icon">❤️</div>
+                        <div class="notif-content">
+                            <h4>Popular Video</h4>
+                            <p>Your video is trending with 500+ views</p>
+                            <div class="notif-time">1 day ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Feed -->
+        <div class="feed-side">
+            <!-- Right Navigation Controls -->
+            <div class="right-nav">
+                <button class="nav-btn" onclick="prevVideo()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="18 15 12 9 6 15"></polyline>
+                    </svg>
+                </button>
+                <button class="nav-btn" onclick="nextVideo()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="feed-card" id="feedCard">
+                <!-- Will be updated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <div id="commentModal">
+        <div class="modal-content">
+            <h3>Add Comment</h3>
+            <textarea id="commentText" placeholder="Write your comment..."></textarea>
+            <div class="modal-buttons">
+                <button class="btn-post" onclick="submitComment()">Post</button>
+                <button class="btn-cancel" onclick="closeCommentModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        let allVideos = {{ videos | tojson | safe }};
+        let originalVideos = [...allVideos]; // Keep original copy
+        let filteredVideos = [...allVideos]; // Current filtered list for recommendations
+        let followingSet = new Set();
+        let currentCommentVideoId = null;
+        let activeCategory = 'all';
+        let searchQuery = '';
+        let currentSection = null;
+        
+        // Verify no duplicates on page load
+        (function() {
+            const videoIds = allVideos.map(v => v.id);
+            const uniqueIds = new Set(videoIds);
+            console.log(`🔍 Initial verification: ${videoIds.length} videos loaded, ${uniqueIds.size} unique IDs`);
+            if (videoIds.length !== uniqueIds.size) {
+                console.error(`⚠️ DUPLICATE IDs FOUND ON PAGE LOAD!`);
+                const seen = new Set();
+                const duplicates = [];
+                videoIds.forEach(id => {
+                    if (seen.has(id)) duplicates.push(id);
+                    seen.add(id);
+                });
+                console.error(`Duplicate IDs: ${duplicates}`);
+            } else {
+                console.log(`✅ All video IDs are unique!`);
+            }
+        })();
+
+        // Section Navigation - Toggle sections
+        function showSection(sectionName) {
+            const targetSection = document.getElementById(sectionName + 'Section');
+            const clickedBtn = event.target.closest('.nav-btn-icon');
+            
+            // If clicking the same section, close it
+            if (currentSection === sectionName) {
+                targetSection.classList.remove('active');
+                clickedBtn.classList.remove('active');
+                currentSection = null;
+                return;
+            }
+            
+            // Close all sections
+            document.querySelectorAll('.content-sidebar').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav-btn-icon').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Open selected section
+            targetSection.classList.add('active');
+            clickedBtn.classList.add('active');
+            currentSection = sectionName;
+            
+            // Load specific section content
+            if (sectionName === 'dashboard') {
+                updateDashboard();
+            } else if (sectionName === 'videos') {
+                loadVideosInfiniteScroll();
+            }
+        }
+
+        // Toast notification system
+        function showToast(message, duration = 2000) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, duration);
+        }
+
+        // Fetch re-ranked feed after interactions (like, comment, share, follow)
+        function updateRankedFeed() {
+            const currentVideoId = allVideos[currentIndex]?.id;
+            
+            console.log('🔄 Re-ranking feed based on your interaction...');
+            console.log('📍 Current video ID:', currentVideoId);
+            console.log('📍 Current feed length:', allVideos.length);
+            
+            showToast('🎯 Feed optimized based on your activity!');
+            
+            fetch('/api/ranked-feed')
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        // Update with newly ranked videos
+                        const newRankedVideos = data.videos;
+                        
+                        console.log('📥 Received ranked videos:', newRankedVideos.length);
+                        console.log('🎯 Top 5 videos after ranking:');
+                        newRankedVideos.slice(0, 5).forEach((v, i) => {
+                            console.log(`  ${i+1}. ${v.title} (Likes: ${v.likes}, Category: ${v.category})`);
+                        });
+                        
+                        // Apply current filters to the new ranked order
+                        let filtered = [...newRankedVideos];
+                        
+                        if (activeCategory !== 'all') {
+                            filtered = filtered.filter(v => v.category.toLowerCase() === activeCategory.toLowerCase());
+                            console.log(`🔍 Filtered by category "${activeCategory}": ${filtered.length} videos`);
+                        }
+                        
+                        if (searchQuery) {
+                            filtered = filtered.filter(v => {
+                                const matchTitle = v.title.toLowerCase().includes(searchQuery);
+                                const matchCreator = v.creator_name.toLowerCase().includes(searchQuery);
+                                const matchHashtags = v.hashtags.some(tag => tag.toLowerCase().includes(searchQuery));
+                                return matchTitle || matchCreator || matchHashtags;
+                            });
+                            console.log(`🔍 Filtered by search "${searchQuery}": ${filtered.length} videos`);
+                        }
+                        
+                        // Update all video lists
+                        originalVideos = newRankedVideos;
+                        allVideos = filtered;
+                        filteredVideos = filtered;
+                        
+                        // Try to maintain current video position
+                        const newIndex = allVideos.findIndex(v => v.id === currentVideoId);
+                        if (newIndex >= 0) {
+                            currentIndex = newIndex;
+                            console.log(`✓ Maintained position at index ${newIndex}`);
+                        } else {
+                            currentIndex = 0;
+                            console.log(`⚠ Video not found in new feed, reset to start`);
+                        }
+                        
+                        // Update UI
+                        updateCard();
+                        updateDashboard();
+                        
+                        console.log(`✅ Feed re-ranked! Algorithm: Engagement 35% | Recency 35% | Following 20% | Interests 10%`);
+                        console.log(`📊 Remaining videos: ${filteredVideos.length - currentIndex - 1}`);
+                        
+                        // Show visual feedback
+                        if (filteredVideos.length > currentIndex + 1) {
+                            const nextVideo = filteredVideos[currentIndex + 1];
+                            console.log(`⏭️ Next video: "${nextVideo.title}" by ${nextVideo.creator_name}`);
+                        }
+                    }
+                })
+                .catch(err => console.error('❌ Error fetching ranked feed:', err));
+        }
+
+        // Update Dashboard Stats - Real-time updates
+        function updateDashboard() {
+            let totalLikes = 0, totalComments = 0, totalShares = 0, totalViews = 0;
+            let creatorStats = {};
+            let hashtagStats = {};
+            
+            // Calculate stats from filtered videos (current recommendation list)
+            filteredVideos.forEach(v => {
+                totalLikes += v.likes;
+                totalComments += v.comments;
+                totalShares += v.shares;
+                totalViews += parseInt(v.views.replace(/[KM]/g, '')) || 0;
+                
+                // Track creator stats
+                if (!creatorStats[v.creator]) {
+                    creatorStats[v.creator] = { likes: 0, videos: 0 };
+                }
+                creatorStats[v.creator].likes += v.likes;
+                creatorStats[v.creator].videos += 1;
+                
+                // Track hashtag stats
+                v.hashtags.forEach(tag => {
+                    if (!hashtagStats[tag]) {
+                        hashtagStats[tag] = { count: 0, likes: 0 };
+                    }
+                    hashtagStats[tag].count += 1;
+                    hashtagStats[tag].likes += v.likes;
+                });
+            });
+            
+            // Update basic stats
+            document.getElementById('dashLikes').textContent = totalLikes;
+            document.getElementById('dashComments').textContent = totalComments;
+            document.getElementById('dashShares').textContent = totalShares;
+            document.getElementById('dashViews').textContent = totalViews + 'K+';
+            
+            // Update Top Creators (top 3 only for cleaner UI)
+            const topCreators = Object.entries(creatorStats)
+                .sort((a, b) => b[1].likes - a[1].likes)
+                .slice(0, 3);
+            
+            const creatorsHTML = topCreators.map(([creator, stats]) => {
+                const maxLikes = topCreators[0][1].likes;
+                const percentage = (stats.likes / maxLikes) * 100;
+                return `
+                    <div class="analytics-item">
+                        <div style="flex: 1;">
+                            <div class="analytics-item-name">${creator}</div>
+                            <div class="analytics-item-bar" style="width: ${percentage}%"></div>
+                        </div>
+                        <div class="analytics-item-value">${stats.likes}</div>
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('topCreatorsContainer').innerHTML = creatorsHTML;
+            
+            // Update Top Hashtags (top 3 only)
+            const topHashtags = Object.entries(hashtagStats)
+                .sort((a, b) => b[1].likes - a[1].likes)
+                .slice(0, 3);
+            
+            const hashtagsHTML = topHashtags.map(([tag, stats]) => {
+                const maxLikes = topHashtags[0][1].likes;
+                const percentage = (stats.likes / maxLikes) * 100;
+                return `
+                    <div class="analytics-item">
+                        <div style="flex: 1;">
+                            <div class="analytics-item-name">#${tag}</div>
+                            <div class="analytics-item-bar" style="width: ${percentage}%"></div>
+                        </div>
+                        <div class="analytics-item-value">${stats.likes}</div>
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('topHashtagsContainer').innerHTML = hashtagsHTML;
+            
+            // Show actual next recommendation tags (next 3 videos in feed)
+            const currentIdx = currentIndex;
+            const upcomingTags = new Set();
+            
+            // Get hashtags from next 3 videos
+            for (let i = 1; i <= 3 && (currentIdx + i) < filteredVideos.length; i++) {
+                const nextVideo = filteredVideos[currentIdx + i];
+                nextVideo.hashtags.forEach(tag => upcomingTags.add(tag));
+            }
+            
+            // Display upcoming tags
+            const tagsArray = Array.from(upcomingTags);
+            const recommendationsHTML = tagsArray.length > 0 ? `
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    ${tagsArray.map(tag => `
+                        <span class="chip active" style="font-size: 12px; padding: 4px 10px;">
+                            #${tag}
+                        </span>
+                    `).join('')}
+                </div>
+                <p style="color: #999; font-size: 12px; margin-top: 10px;">
+                    These tags will appear in your next ${Math.min(3, filteredVideos.length - currentIdx - 1)} videos
+                </p>
+            ` : '<p style="color: #999; font-size: 13px;">No more videos in feed</p>';
+            
+            document.getElementById('nextRecommendations').innerHTML = recommendationsHTML;
+            
+            // Update Category Performance (top 3 categories)
+            const categoryStats = {};
+            filteredVideos.forEach(v => {
+                if (!categoryStats[v.category]) {
+                    categoryStats[v.category] = { count: 0, engagement: 0 };
+                }
+                categoryStats[v.category].count += 1;
+                categoryStats[v.category].engagement += (v.likes + v.comments + v.shares);
+            });
+            
+            const categoryArray = Object.entries(categoryStats)
+                .sort((a, b) => b[1].engagement - a[1].engagement)
+                .slice(0, 3);
+            
+            const categoryHTML = categoryArray.map(([category, stats]) => {
+                const maxEngagement = categoryArray[0][1].engagement;
+                const percentage = (stats.engagement / maxEngagement) * 100;
+                return `
+                    <div class="category-stat-item">
+                        <div class="category-stat-header">
+                            <span class="category-name">${category}</span>
+                            <span class="category-count">${stats.count} videos</span>
+                        </div>
+                        <div class="analytics-item-bar" style="width: ${percentage}%"></div>
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('categoryPerformance').innerHTML = categoryHTML;
+        }
+
+        // Infinite Scroll for Videos
+        let videosLoaded = 0;
+        const videosPerPage = 20;
+
+        function loadVideosInfiniteScroll() {
+            videosLoaded = 0;
+            const container = document.getElementById('videoScrollContainer');
+            container.innerHTML = '';
+            loadMoreVideos();
+            
+            // Add scroll listener
+            container.onscroll = function() {
+                if (container.scrollTop + container.clientHeight >= container.scrollHeight - 100) {
+                    loadMoreVideos();
+                }
+            };
+        }
+
+        function loadMoreVideos() {
+            const container = document.getElementById('videoScrollContainer');
+            const end = Math.min(videosLoaded + videosPerPage, allVideos.length);
+            
+            for (let i = videosLoaded; i < end; i++) {
+                const v = allVideos[i];
+                const videoItem = document.createElement('div');
+                videoItem.className = 'video-item';
+                videoItem.onclick = () => {
+                    currentIndex = i;
+                    updateCard();
+                    showSection('search'); // Go back to feed view
+                };
+                
+                videoItem.innerHTML = `
+                    <img class="video-thumb" src="${v.image_url}" alt="${v.title}" onerror="this.src='https://via.placeholder.com/120x80?text=Video'">
+                    <div class="video-info">
+                        <h4>${v.title}</h4>
+                        <p>${v.creator_name} • ${v.time}</p>
+                        <div class="video-stats">
+                            <span>❤️ ${v.likes}</span>
+                            <span>💬 ${v.comments}</span>
+                            <span>👁️ ${v.views}</span>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(videoItem);
+            }
+            
+            videosLoaded = end;
+        }
+
+        // Initialize: Don't show any section by default
+        window.onload = function() {
+            // Initialize following set with pre-followed creators (1, 2, 3, 4 from backend)
+            followingSet.add(1);
+            followingSet.add(2);
+            followingSet.add(3);
+            followingSet.add(4);
+            
+            console.log('🚀 Video Feed Initialized');
+            console.log(`📊 Total videos: ${allVideos.length}`);
+            console.log(`👥 Pre-following creators: ${Array.from(followingSet).join(', ')}`);
+            console.log(`🎯 Videos are already ranked by algorithm on page load`);
+            
+            updateDashboard();
+        };
+
+        function updateCard() {
+            // Clamp index to valid range - don't loop
+            if (currentIndex >= allVideos.length) {
+                currentIndex = allVideos.length - 1;
+                showEndOfFeed();
+                return;
+            }
+            if (currentIndex < 0) {
+                currentIndex = 0;
+                return;
+            }
+
+            const video = allVideos[currentIndex];
+            
+            // Debug: Track video IDs to detect duplicates
+            if (!window.seenVideoIds) {
+                window.seenVideoIds = [];
+            }
+            window.seenVideoIds.push(video.id);
+            
+            // Check for immediate duplicates
+            if (window.seenVideoIds.length > 1) {
+                const lastId = window.seenVideoIds[window.seenVideoIds.length - 2];
+                if (lastId === video.id) {
+                    console.error(`⚠️ DUPLICATE DETECTED! Same video ID: ${video.id} shown twice in a row!`);
+                }
+            }
+            
+            console.log(`📹 Showing video ${currentIndex + 1}/${allVideos.length}: ID ${video.id} - "${video.title}"`);
+            
+            const card = document.getElementById('feedCard');
+
+            // Check follow status
+            const isFollowing = followingSet.has(video.creator_id);
+            console.log('Video creator_id:', video.creator_id, 'Following:', isFollowing);
+
+            card.innerHTML = `
+                <!-- Top Header -->
+                <div class="card-header">
+                    <div class="header-left" id="profileClick" style="cursor: pointer;">
+                        <div class="card-avatar">${video.creator_avatar}</div>
+                        <div class="card-meta">
+                            <div class="card-username">${video.creator_name}</div>
+                            <div class="card-time">${video.time || ''}</div>
+                        </div>
+                    </div>
+                    <button id="followBtn" class="follow-btn ${isFollowing ? 'following' : ''}">
+                        ${isFollowing ? 'Following' : 'Follow'}
+                    </button>
+                </div>
+
+                <!-- Main Content (Image) -->
+                <div class="card-content">
+                    <div class="card-image">
+                        <img src="${video.image_url}" alt="Video" onerror="this.src='https://via.placeholder.com/500x600?text=No+Image'">
+                    </div>
+                </div>
+
+                <!-- Bottom Info -->
+                <div class="card-info-bottom">
+                    <div class="card-title">${video.title}</div>
+                    <div class="card-hashtags">
+                        ${video.hashtags.map(tag => `${tag}`).join(' ')}
+                    </div>
+                    <div class="card-stats">
+                        <span>👁️ ${video.views} views</span>
+                    </div>
+                </div>
+
+                <!-- Right Side Actions -->
+                <div class="right-actions">
+                    <button class="action-btn" id="likeBtn" title="Like">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        <span>${video.likes}</span>
+                    </button>
+                    <button class="action-btn" onclick="openCommentModal()" title="Comment">
+                        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                        <span>${video.comments}</span>
+                    </button>
+                    <button class="action-btn" onclick="shareCurrentVideo()" title="Share">
+                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                        <span>${video.shares}</span>
+                    </button>
+                </div>
+            `;
+
+            currentCommentVideoId = video.id;
+
+            // Like button handler
+            document.getElementById('likeBtn').onclick = () => {
+                fetch(`/api/like/${video.id}`, {method: 'POST'})
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d.success) {
+                            video.likes = d.likes;
+                            updateCard();
+                            // Fetch re-ranked feed after like
+                            updateRankedFeed();
+                        }
+                    });
+            };
+
+            // Follow button handler
+            document.getElementById('followBtn').onclick = () => {
+                console.log('Follow button clicked for creator_id:', video.creator_id);
+                fetch(`/api/follow/${video.creator_id}`, {method: 'POST'})
+                    .then(r => r.json())
+                    .then(d => {
+                        console.log('Follow response:', d);
+                        if(d.success){
+                            if(d.following){
+                                followingSet.add(video.creator_id);
+                                console.log('Now following creator:', video.creator_id);
+                            } else {
+                                followingSet.delete(video.creator_id);
+                                console.log('Unfollowed creator:', video.creator_id);
+                            }
+                            // Just update the button, don't refresh feed
+                            updateCard();
+                            // Fetch re-ranked feed after follow/unfollow
+                            updateRankedFeed();
+                        }
+                    })
+                    .catch(err => console.error('Follow error:', err));
+            };
+
+            // Profile click handler
+            document.getElementById('profileClick').onclick = () => {
+                showSection('profile');
+            };
+        }
+
+        function refreshFeed(){
+            const currentVideoId = allVideos[currentIndex]?.id;
+            fetch('/api/videos').then(r => r.json()).then(videos => {
+                allVideos = videos;
+                filteredVideos = videos;
+                originalVideos = [...videos];
+                // Try to find the current video in the new list
+                const newIndex = allVideos.findIndex(v => v.id === currentVideoId);
+                currentIndex = newIndex >= 0 ? newIndex : 0;
+                updateCard();
+                updateDashboard(); // Real-time dashboard update after refresh
+            });
+        }
+
+        function showEndOfFeed() {
+            const card = document.getElementById('feedCard');
+            card.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; flex-direction: column; color: #fff; padding: 40px; text-align: center;">
+                    <div style="font-size: 72px; margin-bottom: 20px;">🎉</div>
+                    <div style="font-size: 24px; font-weight: 700; margin-bottom: 12px;">You've reached the end!</div>
+                    <div style="font-size: 16px; color: #999; margin-bottom: 30px;">All ${allVideos.length} videos viewed based on your preferences</div>
+                    <button onclick="restartFeed()" style="background: #0084ff; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;">
+                        Restart Feed
+                    </button>
+                </div>
+            `;
+        }
+
+        function restartFeed() {
+            currentIndex = 0;
+            updateCard();
+            updateDashboard();
+        }
+
+        function nextVideo(){
+            if (currentIndex < allVideos.length - 1) {
+                currentIndex++;
+                console.log(`➡️ Next: Index ${currentIndex}/${allVideos.length - 1}, Video ID: ${allVideos[currentIndex]?.id}`);
+                updateCard();
+                updateDashboard(); // Update next recommendations as user scrolls
+            } else {
+                console.log(`🏁 Reached end of feed (${allVideos.length} videos)`);
+                showEndOfFeed();
+            }
+        }
+
+        function prevVideo(){
+            if (currentIndex > 0) {
+                currentIndex--;
+                console.log(`⬅️ Previous: Index ${currentIndex}/${allVideos.length - 1}, Video ID: ${allVideos[currentIndex]?.id}`);
+                updateCard();
+                updateDashboard(); // Update next recommendations as user scrolls
+            } else {
+                console.log(`🏁 Already at first video`);
+            }
+        }
+
+        function openCommentModal() {
+            document.getElementById('commentModal').classList.add('active');
+            document.getElementById('commentText').focus();
+        }
+
+        function closeCommentModal() {
+            document.getElementById('commentModal').classList.remove('active');
+            document.getElementById('commentText').value = '';
+        }
+
+        function submitComment() {
+            const text = document.getElementById('commentText').value.trim();
+            if (!text) {
+                alert('Please write a comment');
+                return;
+            }
+
+            fetch(`/api/comment/${currentCommentVideoId}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({text: text})
+            })
+            .then(r => r.json())
+            .then(d => {
+                if (d.success) {
+                    // Update local data
+                    const video = allVideos.find(v => v.id === currentCommentVideoId);
+                    if (video) {
+                        video.comments = d.comments;
+                    }
+                    closeCommentModal();
+                    updateCard();
+                    // Fetch re-ranked feed after comment
+                    updateRankedFeed();
+                }
+            })
+            .catch(err => console.error('Error:', err));
+        }
+
+        function shareCurrentVideo() {
+            fetch(`/api/share/${currentCommentVideoId}`, {method: 'POST'})
+                .then(r => r.json())
+                .then(d => {
+                    if (d.success) {
+                        // Update local data
+                        const video = allVideos.find(v => v.id === currentCommentVideoId);
+                        if (video) {
+                            video.shares = d.shares;
+                        }
+                        updateCard();
+                        // Fetch re-ranked feed after share
+                        updateRankedFeed();
+                    }
+                })
+                .catch(err => console.error('Error:', err));
+        }
+
+        // Search functionality
+        function searchVideos() {
+            const topSearch = document.getElementById('topSearchInput');
+            const sideSearch = document.getElementById('searchInput');
+            
+            // Sync both search inputs
+            if (topSearch) {
+                searchQuery = topSearch.value.toLowerCase();
+                if (sideSearch) sideSearch.value = topSearch.value;
+            } else if (sideSearch) {
+                searchQuery = sideSearch.value.toLowerCase();
+            }
+            
+            applyFilters();
+        }
+
+        // Category filter
+        function filterByCategory(category) {
+            activeCategory = category;
+            
+            // Update chip styles
+            document.querySelectorAll('.chip').forEach(chip => {
+                chip.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            applyFilters();
+        }
+
+        // Apply both search and category filters
+        function applyFilters() {
+            let filtered = [...originalVideos];
+
+            // Apply category filter
+            if (activeCategory !== 'all') {
+                filtered = filtered.filter(v => v.category.toLowerCase() === activeCategory.toLowerCase());
+            }
+
+            // Apply search filter
+            if (searchQuery) {
+                filtered = filtered.filter(v => {
+                    const matchTitle = v.title.toLowerCase().includes(searchQuery);
+                    const matchCreator = v.creator_name.toLowerCase().includes(searchQuery);
+                    const matchHashtags = v.hashtags.some(tag => tag.toLowerCase().includes(searchQuery));
+                    return matchTitle || matchCreator || matchHashtags;
+                });
+            }
+
+            allVideos = filtered;
+            filteredVideos = filtered;
+            currentIndex = 0;
+            
+            // Update results count
+            const resultsText = document.getElementById('searchResults');
+            if (searchQuery || activeCategory !== 'all') {
+                resultsText.textContent = `Found ${filtered.length} video${filtered.length !== 1 ? 's' : ''}`;
+            } else {
+                resultsText.textContent = 'Showing all videos';
+            }
+            
+            if (filtered.length > 0) {
+                updateCard();
+                updateDashboard(); // Real-time dashboard update after filtering
+            } else {
+                document.getElementById('feedCard').innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; flex-direction: column; color: #999;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">😔</div>
+                        <div style="font-size: 16px;">No videos found</div>
+                        <div style="font-size: 14px; margin-top: 8px;">Try a different search or category</div>
+                    </div>
+                `;
+                updateDashboard(); // Update even when empty
+            }
+        }
+
+        // Shuffle feed function with recommendation ranking
+        function shuffleFeed() {
+            const resultsText = document.getElementById('searchResults');
+            resultsText.textContent = '🔀 Shuffling and ranking...';
+            
+            // Call API to get shuffled and ranked videos
+            fetch('/api/shuffle', {method: 'POST'})
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        // Update original videos with ranked results
+                        originalVideos = data.videos;
+                        
+                        // Reapply current filters if any
+                        let filtered = [...originalVideos];
+                        
+                        if (activeCategory !== 'all') {
+                            filtered = filtered.filter(v => v.category.toLowerCase() === activeCategory.toLowerCase());
+                        }
+                        
+                        if (searchQuery) {
+                            filtered = filtered.filter(v => {
+                                const matchTitle = v.title.toLowerCase().includes(searchQuery);
+                                const matchCreator = v.creator_name.toLowerCase().includes(searchQuery);
+                                const matchHashtags = v.hashtags.some(tag => tag.toLowerCase().includes(searchQuery));
+                                return matchTitle || matchCreator || matchHashtags;
+                            });
+                        }
+                        
+                        allVideos = filtered;
+                        filteredVideos = filtered;
+                        currentIndex = 0;
+                        updateCard();
+                        updateDashboard(); // Real-time dashboard update after shuffle
+                        
+                        // Visual feedback
+                        resultsText.textContent = `✨ Ranked by algorithm! (${allVideos.length} videos)`;
+                        setTimeout(() => {
+                            if (searchQuery || activeCategory !== 'all') {
+                                resultsText.textContent = `Found ${allVideos.length} video${allVideos.length !== 1 ? 's' : ''}`;
+                            } else {
+                                resultsText.textContent = 'Showing all videos';
+                            }
+                        }, 2500);
+                    }
+                })
+                .catch(err => {
+                    console.error('Shuffle error:', err);
+                    resultsText.textContent = '❌ Shuffle failed';
+                    setTimeout(() => {
+                        resultsText.textContent = 'Showing all videos';
+                    }, 2000);
+                });
+        }
+
+        updateCard();
+
+        document.addEventListener('keydown', e => {
+            if(e.key === 'ArrowUp') prevVideo();
+            if(e.key === 'ArrowDown') nextVideo();
+        });
+    </script>
+</body>
+</html>
